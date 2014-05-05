@@ -1,0 +1,36 @@
+[user]
+	name = Eliezer Kanal
+	email = eykanal@erikdev.com
+[color]
+	ui = auto
+[alias]
+	st = status
+	dt = difftool -y
+	a = add
+	c = commit
+	co = checkout
+	l = log --color --abbrev-commit --pretty=medium --graph
+	recent = log --color --abbrev-commit --pretty=oneline -n 10 --graph
+[merge]
+	tool = opendiff
+[diff]
+	tool = opendiff
+[difftool]
+	prompt = false
+[core]
+#	editor = open -enW
+[github]
+	user = eykanal
+	token = 3c7421a120a7b42e9b4479d07723edb1
+[core]
+	autocrlf = input
+	safecrlf = true
+	excludesfile = /Users/ilanakanal/.gitignore_global
+[credential]
+	helper = osxkeychain
+[difftool "sourcetree"]
+	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+	path = 
+[mergetool "sourcetree"]
+	cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+	trustExitCode = true
