@@ -1,33 +1,28 @@
-function exerciseTimer(exerciseArray) {
+function exerciseTimer(exercises) {
 	
-	var countdownSpot = document.getElementById("countdown");
-	var descSpot = document.getElementById("desc");
-	var i = 0;
+	var time = document.getElementById('time');
+	var desc = document.getElementById('desc');
 	
-	var exerciseObject = exerciseArray[i];
-	descSpot.textContent = exerciseObject.desc;
-	countdownSpot.textContent = exerciseObject.countdown;
+	var exercise = exercises.shift();
+	desc.textContent = exercise.desc;
+	time.textContent = exercise.countdown;
 
 	var tt = setInterval(function() {
 	
-		var exerciseObject = exerciseArray[i];
-	
-		descSpot.textContent = exerciseObject.desc;
-		countdownSpot.textContent = exerciseObject.countdown;
+		desc.textContent = exercise.desc;
+		time.textContent = exercise.countdown;
 		
-		document.getElementById('countdown').textContent = exerciseObject.countdown.toFixed(1);
-		exerciseObject.countdown = exerciseObject.countdown - 0.1;
+		document.getElementById('time').textContent = exercise.countdown.toFixed(0);
+		exercise.countdown = exercise.countdown - 1;
 		
-		if (exerciseObject.countdown <= 0) { 
-			if(i < (exerciseArray.length - 1)) {
-				i++;
-			} else {
+		if (exercise.countdown <= 0) { 
+			exercise = exercises.shift();
+			if (!exercise) {
 				clearInterval(tt);
 
-				descSpot.textContent = "You're done!";
-				countdownSpot.textContent = "";	
+				desc.textContent = "You're done!";
+				time.textContent = "";	
 			}
 		}
-	}, 100);
-	
+	}, 1000);	
 }
