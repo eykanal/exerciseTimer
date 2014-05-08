@@ -18,8 +18,13 @@
     <![endif]-->
   </head>
   <body>
-    <div id="time" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-center"></div>
-    <div id="desc" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-center"></div>
+    <div id="countdown">
+      <div id="time" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-center"></div>
+      <div id="desc" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-center"></div>
+    </div>
+    <div id="workouts">
+
+    </div>
 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
@@ -27,38 +32,22 @@
     <script src="js/bootstrap.min.js"></script>
     <script src="js/timer.js"></script>
     <script type="text/javascript">
-    var exerciseArray = [
-      {
-        "desc":       "Pushup/Pullup",
-        "countdown":  30
-      }, {
-        "desc":       "Squat punch",
-        "countdown":  30
-      }, {
-        "desc":       "Pushup/Pullup",
-        "countdown":  30
-      }, {
-        "desc":       "Squat punch",
-        "countdown":  30
-      }, {
-        "desc":       "Rest",
-        "countdown":  60
-      }, {
-        "desc":       "Pushup/Pullup",
-        "countdown":  30
-      }, {
-        "desc":       "Squat punch",
-        "countdown":  30
-      }, {
-        "desc":       "Pushup/Pullup",
-        "countdown":  30
-      }, {
-        "desc":       "Squat punch",
-        "countdown":  30
-      }
-    ];
-
-    exerciseTimer(exerciseArray);
+    var exerciseArray = {
+      "Evening1": [
+        [ "Burpee", 30 ],
+        [ "Squat punch", 30 ],
+        [ "Pushup/Pullup", 30 ],
+        [ "Squat punch", 30 ],
+        [ "Rest", 60 ],
+        [ "Burpee", 30 ],
+        [ "Squat punch", 30 ],
+        [ "Pushup/Pullup", 30 ],
+        [ "Squat punch", 30 ]],
+      "Work1": [
+        [ "One-legged squat", 30 ],
+        [ "Dips", 30 ]]};
+    
+    exerciseTimer(exerciseArray.Evening1);
     </script>
   </body>
 </html>

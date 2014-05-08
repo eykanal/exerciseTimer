@@ -4,18 +4,18 @@ function exerciseTimer(exercises) {
 	var desc = document.getElementById('desc');
 	
 	var exercise = exercises.shift();
-	desc.textContent = exercise.desc;
-	time.textContent = exercise.countdown;
+	desc.textContent = exercise[0];
+	time.textContent = exercise[1];
 
 	var tt = setInterval(function() {
 	
-		desc.textContent = exercise.desc;
-		time.textContent = exercise.countdown;
+		desc.textContent = exercise[0];
+		time.textContent = exercise[1];
 		
-		document.getElementById('time').textContent = exercise.countdown.toFixed(0);
-		exercise.countdown = exercise.countdown - 1;
+		document.getElementById('time').textContent = exercise[1].toFixed(0);
+		exercise[1] = exercise[1] - 1;
 		
-		if (exercise.countdown <= 0) { 
+		if (exercise[1] <= 0) { 
 			exercise = exercises.shift();
 			if (!exercise) {
 				clearInterval(tt);
@@ -25,4 +25,8 @@ function exerciseTimer(exercises) {
 			}
 		}
 	}, 1000);	
+}
+
+function showExercise(exercises) {
+
 }
