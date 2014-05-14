@@ -18,36 +18,47 @@
     <![endif]-->
   </head>
   <body>
-    <div id="countdown">
-      <div id="time" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-center"></div>
-      <div id="desc" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-center"></div>
-    </div>
-    <div id="workouts">
+    <div class="container">
+      <div id="countdown">
+        <div id="time" class="col-xs-12 text-center"></div>
+        <div id="desc" class="col-xs-12 text-center"></div>
+      </div>
+      <div id="workouts">
+      </div>
 
-    </div>
+      <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+      <!-- Include all compiled plugins (below), or include individual files as needed -->
+      <script src="js/bootstrap.min.js"></script>
+      <script src="js/timer.js"></script>
+      <script type="text/javascript">
+      var exerciseArray = [
+        {
+          "name": "Evening",
+          "workout": [
+            [ "Burpee", 30 ],
+            [ "Squat punch", 30 ],
+            [ "Pushup/Pullup", 30 ],
+            [ "Squat punch", 30 ],
+            [ "Rest", 60 ],
+            [ "Burpee", 30 ],
+            [ "Squat punch", 30 ],
+            [ "Pushup/Pullup", 30 ],
+            [ "Squat punch", 30 ]]},
+        {
+          "name": "Work",
+          "workout": [
+            [ "One-legged squat", 30 ],
+            [ "Dips", 30 ]]}];
+      
+      //exerciseTimer(exerciseArray[0].workout);
+      showExercise(exerciseArray);
 
-    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-    <!-- Include all compiled plugins (below), or include individual files as needed -->
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/timer.js"></script>
-    <script type="text/javascript">
-    var exerciseArray = {
-      "Evening1": [
-        [ "Burpee", 30 ],
-        [ "Squat punch", 30 ],
-        [ "Pushup/Pullup", 30 ],
-        [ "Squat punch", 30 ],
-        [ "Rest", 60 ],
-        [ "Burpee", 30 ],
-        [ "Squat punch", 30 ],
-        [ "Pushup/Pullup", 30 ],
-        [ "Squat punch", 30 ]],
-      "Work1": [
-        [ "One-legged squat", 30 ],
-        [ "Dips", 30 ]]};
-    
-    exerciseTimer(exerciseArray.Evening1);
-    </script>
+      $("#workouts table").click(function() {
+        exerciseTimer(JSON.parse(this.getAttribute("name")).workout);
+      });
+
+</script>
+    </div>
   </body>
 </html>
