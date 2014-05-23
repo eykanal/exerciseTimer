@@ -17,16 +17,20 @@ var eTools = (function() {
 		{
 			name: "Work",
 			workout: [
+				[ "Dips", 30 ],
 				[ "One-legged squat", 30 ],
-				[ "Dips", 30 ]]}];
+				[ "Dips", 30 ],
+				[ "One-legged squat", 30 ]]}];
 
 	// iterate through a workout, dsisplaying the name and the seconds
 	var exerciseTimer = function(exercises) {
+		$("#workouts").hide();
 		
 		var time = document.getElementById("time");
 		var desc = document.getElementById("desc");
 		
-		var exercise = exercises.shift();
+		var i = 0;
+		var exercise = exercises.workout[i];
 		desc.textContent = exercise[0];
 		time.textContent = exercise[1];
 
@@ -38,22 +42,31 @@ var eTools = (function() {
 			document.getElementById("time").textContent = exercise[1].toFixed(0);
 			exercise[1] = exercise[1] - 1;
 			
-			if (exercise[1] <= 0) { 
-				exercise = exercises.shift();
-				if (!exercise) {
-					clearInterval(tt);
+			if (exercise[1] <= 0) {
+				i++;
+				exercise = exercises.workout[i];
+				if (i > exercises.workout.length - 1) {
+					setTimeout(function(){
+						clearInterval(tt);
 
-					desc.textContent = "You're done!";
-					time.textContent = "";	
+						desc.textContent = "You're done!";
+						time.textContent = "";	
+
+						$("#workouts").show();
+					}, 1000);
 				}
 			}
 		}, 1000);	
-	}
+	};
 
 	// display a table for each exercise
 	var showExercise = function(exercises) {
 		var child = [];
-		while(exercise = exercises.shift()) {
+
+		for (var i = 0; i <= exercises.length - 1; i++) {
+			
+			var exercise = exercises[i];
+
 			l = child.push($("<table class='table'></table>")) - 1;  // "-1" at end to convert count into index
 			child[l].attr("name", child.length-1);
 			//child[l].attr("name", JSON.stringify(exercise));
@@ -68,7 +81,7 @@ var eTools = (function() {
 			var h = $("<div class='col-md-4'></div>").append(e);
 			$("#workouts").append(h);
 		})
-	}
+	};
 
 	return { showExercise : showExercise, exerciseTimer : exerciseTimer, exerciseArray : exerciseArray };
 
